@@ -18,7 +18,7 @@ def check_row_winner(row):
     Return the player number that wins for that row.
     If there is no winner, return 0.
     """
-    if row[0] == row[1] and row[1] == row[2]:
+    if row[0] == row[1] and row[1] == row[2]: # Will come back to this
         return row[0]
     return 0
 
@@ -67,7 +67,7 @@ def add_piece(game, player, row, column):
     row: 0-index row
     column: 0-index column
     """
-    game[row][column+1] = player
+    game[row][column] = player # The function "convert_input_to_coordinate" handles the set logic "start with 1" and the "+1" beside "column" would confuse the players by adding a 1 to what they put in. For instance, if they pick column 1 and insert 1, it will choose the second column. Fixed by removing the "+1" in "[column]".
     return game
 
 def check_space_empty(game, row, column):
@@ -77,7 +77,7 @@ def convert_input_to_coordinate(user_input):
     return user_input - 1
 
 def switch_player(player):
-    if player = 1:
+    if player == 1: # Single equal sign is only used when assigning data to a variable but in this case, we need a double equal sign for comparison. Fixed by replacing the single equal sign with a double equal sign.
         return 2
     else:
         return 1
@@ -98,12 +98,14 @@ if __name__ == '__main__':
     while winner == 0 and moves_exist(game):
         print("Currently player: " + str(player))
         available = False
-        while not available
+        while not available # Issue here
             row = convert_input_to_coordinate(int(input("Which row? (start with 1) ")))
             column = convert_input_to_coordinate(int(input("Which column? (start with 1) ")))
-            available = check_space_empty(game, row)
+            available = check_space_empty(game, row) # One reuiqred positional argument is missing here, which is "column". Fixed by adding "column" to the argument.
         game = add_piece(game, player, row, column)
         display_game(game)
         player = switch_player(player)
-#        winner = check_winner(game)
+        winner = check_winner(game) # Because this line is stuck in a comment, the program refuses to declare a winner if a player meets all the conditions to win the game. Fixed by removing the hashtag in the beginning that kept the lines in a comment.
     display_winner(winner)
+
+# An error that causes the code to run continuously without confirming the winner. Also one that counts 1, 2, and 3 as 0, 1, and 2.
