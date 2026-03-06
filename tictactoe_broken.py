@@ -18,7 +18,7 @@ def check_row_winner(row):
     Return the player number that wins for that row.
     If there is no winner, return 0.
     """
-    if row[0] == row[1] and row[1] == row[2]: # Will come back to this
+    if row[0] == row[1] and row[1] == row[2]:
         return row[0]
     return 0
 
@@ -109,3 +109,4 @@ if __name__ == '__main__':
     display_winner(winner)
 
 # An error that causes the code to run continuously without confirming the winner. Also one that counts 1, 2, and 3 as 0, 1, and 2.
+
