@@ -2,6 +2,10 @@ import random
 
 def compare_numbers(number, user_guess):
     ## your code here
+    cowbull = [0, 0, 0, 0]
+    for i in range (len(number)):
+        if number [i] == user_guess [i]:
+            cowbull [i] += 1 # My code ends here
     return cowbull
 
 playing = True #gotta play the game
@@ -16,7 +20,7 @@ print("The game ends when you get 4 bulls!")
 print("Type exit at any prompt to exit.")
 
 while playing:
-    user_guess = raw_input("Give me your best guess!")
+    user_guess = raw_input("Give me your best guess! ")
     if user_guess == "exit":
         break
     cowbullcount = compare_numbers(number,user_guess)
@@ -30,3 +34,4 @@ while playing:
         break #redundant exit
     else:
         print("Your guess isn't quite right, try again.")
+
